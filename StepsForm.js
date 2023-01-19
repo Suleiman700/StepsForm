@@ -60,13 +60,30 @@ export default class StepsForm {
         this.render()
     }
 
+    /**
+     * set current step errors
+     * @param _errors {object}
+     * example of errors:<br>
+     * const errors = [<br>
+     *     {<br>
+     *         'msg': 'This field is required',<br>
+     *         'element': element<br>
+     *     }<br>
+     * ]<br>
+     *
+     */
+    setStepErrors(_errors) {
+
+
+    }
+
     #createStepsLine() {
         // get steps
         const steps = this.getSteps()
 
         // create steps parent container
         const container = document.createElement('div');
-        container.classList.add('steps-bar');
+        container.classList.add('steps-bar', 'mt-5');
 
         const ul = document.createElement('ul');
         ul.classList.add('steps-indicator');

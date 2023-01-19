@@ -10,17 +10,16 @@ function validateStepOne() {
 
 const steps = [
     {
-        title: 'User Name',
+        title: 'Username',
         html: (_wizardForm) => {
             return new Promise((resolve) => {
                 let divBox = document.createElement('div');
-                let btn = document.createElement('button');
 
                 // username
                 const userNameDiv = document.createElement('div')
                 userNameDiv.classList.add('form-group')
                 const usernameLabel = document.createElement('label')
-                usernameLabel.innerText = 'Enter Username'
+                usernameLabel.innerText = 'Enter Username:'
                 usernameLabel.setAttribute('for', 'username')
                 const usernameInput = document.createElement('input')
                 usernameInput.classList.add('form-control')
@@ -30,27 +29,6 @@ const steps = [
                 userNameDiv.append(usernameInput)
                 divBox.append(userNameDiv)
 
-//                 divBox.innerHTML = `<form>
-//   <div class="form-group">
-//     <label for="exampleInputEmail1">Email address</label>
-//     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-//     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-//   </div>
-//   <div class="form-group">
-//     <label for="exampleInputPassword1">Password</label>
-//     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-//   </div>
-//   <div class="form-check">
-//     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-//     <label class="form-check-label" for="exampleCheck1">Check me out</label>
-//   </div>
-//   <button type="submit" class="btn btn-primary">Submit</button>
-// </form>`
-
-                btn.addEventListener('click', () => {
-                    myStepsForm.setStepCompleted(true)
-                })
-                divBox.append(btn)
                 resolve(divBox)
             })
         },
@@ -58,7 +36,19 @@ const steps = [
             myStepsForm.gotoPreviousStep()
         },
         CB_nextOnClick: () => {
-            console.log('hi')
+            const errors = []
+
+            // check if username input is not empty
+            const usernameInput = document.querySelector('input#username')
+            if (!usernameInput.value) {
+                errors.push({
+                    'msg': 'Username field is required',
+                    'element': usernameInput
+                });
+            }
+
+            console.log(errors)
+
             myStepsForm.gotoNextStep()
         },
         canGoToPreviousStep: false

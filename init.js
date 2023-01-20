@@ -19,7 +19,7 @@ const steps = [
                 const userNameDiv = document.createElement('div')
                 userNameDiv.classList.add('form-group')
                 const usernameLabel = document.createElement('label')
-                usernameLabel.innerText = 'Enter Username:'
+                usernameLabel.innerHTML = 'Enter Username: <code>*</code>'
                 usernameLabel.setAttribute('for', 'username')
                 const usernameInput = document.createElement('input')
                 usernameInput.classList.add('form-control')
@@ -36,18 +36,15 @@ const steps = [
             myStepsForm.gotoPreviousStep()
         },
         CB_nextOnClick: () => {
-            const errors = []
+            let validStep = true
 
             // check if username input is not empty
             const usernameInput = document.querySelector('input#username')
             if (!usernameInput.value) {
-                errors.push({
-                    'msg': 'Username field is required',
-                    'element': usernameInput
-                });
+                validStep = false
             }
 
-            console.log(errors)
+            myStepsForm.setStepCompleted(validStep)
 
             myStepsForm.gotoNextStep()
         },
@@ -58,13 +55,21 @@ const steps = [
         html: (_wizardForm) => {
             return new Promise((resolve) => {
                 let divBox = document.createElement('div');
-                let btn = document.createElement('button');
-                btn.innerHTML = 'Mark Step 2 Completed';
-                divBox.innerHTML = 'step 2';
-                btn.addEventListener('click', () => {
-                    myStepsForm.setStepCompleted(true)
-                })
-                divBox.append(btn)
+
+                // username
+                const userNameDiv = document.createElement('div')
+                userNameDiv.classList.add('form-group')
+                const usernameLabel = document.createElement('label')
+                usernameLabel.innerHTML = 'Enter Email: <code>*</code>'
+                usernameLabel.setAttribute('for', 'email')
+                const usernameInput = document.createElement('input')
+                usernameInput.type = 'email'
+                usernameInput.classList.add('form-control')
+                usernameInput.id = 'email'
+
+                userNameDiv.append(usernameLabel)
+                userNameDiv.append(usernameInput)
+                divBox.append(userNameDiv)
 
                 resolve(divBox)
             })
@@ -73,18 +78,46 @@ const steps = [
             myStepsForm.gotoPreviousStep()
         },
         CB_nextOnClick: () => {
+            let validStep = true
+
+            // check if username input is not empty
+            const emailInput = document.querySelector('input#email')
+            const regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!regex.test(emailInput.value)) {
+                validStep = false
+            }
+
+            myStepsForm.setStepCompleted(validStep)
+
             myStepsForm.gotoNextStep()
         },
         canGoToPreviousStep: true
     },
     {
-        title: 'User Address',
+        title: 'Final',
         html: (_wizardForm) => {
             return new Promise((resolve) => {
-                let divBox = document.createElement('div');
-                let btn = document.createElement('button');
-                btn.innerHTML = 'המשך';
-                divBox.innerHTML = 'step 2';
+                const divBox = document.createElement('div');
+                divBox.classList.add('text-center')
+                divBox.innerHTML = 'Final Step';
+
+                const submitButtonDiv = document.createElement('div');
+                submitButtonDiv.classList.add('mt-5')
+                const submitButton = document.createElement('button')
+                submitButton.classList.add('btn', 'btn-success')
+                submitButton.innerText = 'Submit Data'
+                submitButtonDiv.append(submitButton)
+
+                submitButtonDiv.addEventListener('click', () => {
+                    Swal.fire(
+                        'Good job!',
+                        'You clicked the button!',
+                        'success'
+                    )
+                })
+
+                divBox.append(submitButtonDiv)
+
                 resolve(divBox)
             })
         },

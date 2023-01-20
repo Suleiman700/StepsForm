@@ -34,6 +34,11 @@ export default class StepsForm {
      */
     gotoNextStep() {
         if (!this.#stepCompleted) {
+            Swal.fire(
+                'Ops!',
+                'Unable to process.<br>make sure to fill the required fields first.',
+                'error'
+            )
             return
         }
 
@@ -58,23 +63,6 @@ export default class StepsForm {
 
         // render
         this.render()
-    }
-
-    /**
-     * set current step errors
-     * @param _errors {object}
-     * example of errors:<br>
-     * const errors = [<br>
-     *     {<br>
-     *         'msg': 'This field is required',<br>
-     *         'element': element<br>
-     *     }<br>
-     * ]<br>
-     *
-     */
-    setStepErrors(_errors) {
-
-
     }
 
     #createStepsLine() {

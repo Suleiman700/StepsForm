@@ -4,10 +4,6 @@ const myStepsForm = new StepsForm()
 
 myStepsForm.setParent('MyWizardForm')
 
-function validateStepOne() {
-
-}
-
 const steps = [
     {
         title: 'Username',

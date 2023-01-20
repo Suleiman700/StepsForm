@@ -1,5 +1,9 @@
 # StepsForm
-A vanilla javascript (demo) plugin to create steps form
+A vanilla javascript (demo) plugin to create steps form.
+
+Feel free to use the demo/idea code to improve/make a better one.
+
+![phpstorm64_jSgsVuErMO](https://user-images.githubusercontent.com/25286081/213615478-eb9185e4-1063-4fb7-afb4-e005a9f66390.gif)
 
 ---
 
@@ -122,5 +126,3 @@ myStepsForm.setSteps(steps)
 ```javascript
 myStepsForm.render()
 ```
-
-![phpstorm64_jSgsVuErMO](https://user-images.githubusercontent.com/25286081/213615478-eb9185e4-1063-4fb7-afb4-e005a9f66390.gif)

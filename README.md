@@ -1,6 +1,6 @@
 # StepsForm
 
-This JavaScript repository contains a demo plugin that allows users to create step forms using vanilla JavaScript. The project serves as an excellent starting point for developers who wish to improve upon the plugin or create a more advanced version.
+This JavaScript code allows users to create step forms using vanilla JavaScript. The project serves as an excellent starting point for developers who wish to improve upon the plugin or create a more advanced version.
 
 Feel free to use the code provided in the demo to improve upon the plugin and make it better.
 

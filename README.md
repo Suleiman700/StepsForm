@@ -1,7 +1,8 @@
 # StepsForm
-A vanilla javascript (demo) plugin to create steps form.
 
-Feel free to use the demo/idea code to improve/make a better one.
+This JavaScript repository contains a demo plugin that allows users to create step forms using vanilla JavaScript. The project serves as an excellent starting point for developers who wish to improve upon the plugin or create a more advanced version.
+
+Feel free to use the code provided in the demo to improve upon the plugin and make it better.
 
 ![phpstorm64_jSgsVuErMO](https://user-images.githubusercontent.com/25286081/213615478-eb9185e4-1063-4fb7-afb4-e005a9f66390.gif)
 
